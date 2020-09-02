@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Ultimate CRUD</title>
+</head>
+<style>
+    .css-serial {
+  counter-reset: serial-number;  /* Set the serial number counter to 0 */
+}
+
+.css-serial td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<body>
+  <div>
+    <form method="POST" action="/users">
+      <input type="text" name="name"> 
+      <input type="submit">
+  </form>
+  </div>
+  <div>
+    <table class="css-serial">
+      <thead>
+          <tr>
+              <th>No.</th>
+              <th>Department Name</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <% for(var i =0; i <depname.length; i++){%>
+              <tr>
+                  <td></td>
+                  <td><%= depname[i].name %></td>
+                  <td><a href='/users/update/<%=depname[i]._id%>' ><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update</button></a></td>
+                  <td><a href="/users/delete/<%=depname[i]._id%>" onclick="return confirm ('Are You Sure To Delete')"><button>Delete</button> </a></td>
+              </tr>
+          <%}%>
+      </tbody>
+  </table>
+  </div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form method="POST" action="/users">
+                <input type="hidden" name="id" value="/users/update/<%=depname._id%>">
+                <input type="text">
+                <button type="submit">Update</button>
+            </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+</body>
+</html>
