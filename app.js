@@ -12,7 +12,7 @@ var departmentRouter = require('./routes/api/department')
 //mongodb
 const mongoose = require ("mongoose");
 
-mongoose.connect("mongodb+srv://ultimatesolution:ultimatesolution@cluster0.hkriq.mongodb.net/CRUD_DB?retryWrites=true&w=majority",{useNewUrlParser: true},(err)=>{
+mongoose.connect("mongodb+srv://ultimatesolution:ultimatesolution@cluster0.hkriq.mongodb.net/CRUD_DB?retryWrites=true&w=majority",{useNewUrlParser: true , useUnifiedTopology: true},(err)=>{
   if(!err){
     console.log("MongoDB Connection Success");
   }else {
