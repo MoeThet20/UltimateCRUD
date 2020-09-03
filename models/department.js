@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 var crudSchema = new mongoose.Schema({
-    name:{
+    dep_name:{
         type: String,
         required: true
     },

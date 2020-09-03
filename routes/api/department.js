@@ -47,7 +47,7 @@ router.get('/dep', function(req, res, next) {
 
 router.post('/dep', (req,res)=>{
     var dep = new Dep();
-    dep.name = req.body.name;
+    dep.dep_name = req.body.dep_name;
     dep.save(function(err,rtn){
      if(err){
          res.status(500).json({
@@ -79,7 +79,7 @@ router.delete('/dep/:id' , (req,res)=>{
 
 router.put('/dep/:id',(req,res)=>{
     var update ={
-        name : req.body.name,
+        dep_name : req.body.dep_name,
     };
     Dep.findByIdAndUpdate(req.params.id ,{$set:update}, (err, rtn)=>{
         if(err){
