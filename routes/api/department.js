@@ -71,6 +71,7 @@ router.delete("/dep/:id", (req, res) => {
     } else {
       res.status(200).json({
         message: "Department Name Deleted",
+        delete_data: rtn
       });
     }
   });
