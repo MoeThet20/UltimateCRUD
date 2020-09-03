@@ -1,12 +1,13 @@
 var express = require("express");
 var router = express.Router();
-const Dep = require("../models/deparment");
+const Dep = require("../models/department");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   Dep.find({}, function (err, rtn) {
     if (err) throw err;
-    res.render("depReg", { depname: rtn });
+    res.status(200).json({ });
+    ("depReg", { depname: rtn });
   });
 });
 
